@@ -9,10 +9,11 @@
 using namespace std;
 
 
-//INSTRUCTIONS: There are three errors in Shapes.hpp that prevent
-//              the program from compiling. Find them and fix them.
-//              Do not alter any of the private member variables or
-//              the order they're declared in (hint hint)
+//SOLUTIONS:        Search for "ERROR" in Shapes.hpp to review
+//                  the issues that caused compiler errors.
+//                  Please check the README files on GitHub
+//                  for a description of what each error was
+//                  and why it was causing problems.
 
 
 /* -------------------------------------------------------------------------- */

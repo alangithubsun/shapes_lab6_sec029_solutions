@@ -20,16 +20,11 @@ public:
 };
 
 
-class Circle : public Shape {
+class Circle : public Shape { //ERROR #1: Used to be "Shape" instead of "public Shape"
 public:
-    //default constructor, sets radius to 0
     Circle() : radius(0) {}
-
-    //non-default constructor, what should go in the ??
     Circle(double radius_) : radius(radius_) {}
 
-    //what does override do?
-    //does virtual matter here?
     virtual double get_area() const override { return pi * radius * radius; }
     virtual double get_perimeter() const override {return 2 * pi * radius; }
 
@@ -40,11 +35,9 @@ private:
 
 class Rectangle : public Shape {
 public:
-    Rectangle() : length(0), width(0) {}
-
+    Rectangle() : length(0), width(0) {} //ERROR #2: Used to be width(0), length(0)
     Rectangle(double length_, double width_) : length(length_), width(width_) {}
 
-    //there's no virtual or override. Does this cause problems?
     double get_area() const { return length * width; }
     double get_perimeter() const { return 2 * (length + width); }
 
@@ -56,24 +49,14 @@ private:
 
 class Square : public Rectangle {
 public:
-    //default constructor that calls default constructor
-    //to initialize rectangle's member varaibles
     Square() : Rectangle() {}
-
-    //makes rectangle's length and width equal to side
     Square(double side) : Rectangle(side, side) {}
 
-    //now we can juse call the functions from the
-    //Rectangle class to reduce code duplication
     double get_area() const { return Rectangle::get_area(); }
     double get_perimeter() const { return Rectangle::get_perimeter(); }
-
-    //note that square does NOT have any private member 
-    //variables itself. Do we need any for square?
 };
 
 
-//everything in NeagtiveSquare is correct
 class NegativeSquare : public Square {
 public:
     NegativeSquare() : Square(), scalar(-1) {}
@@ -88,7 +71,7 @@ private:
 
 class StupidRectangle : public Rectangle {
 public:
-    StupidRectangle() : Rectangle(), junk(33) {}
+    StupidRectangle() : Rectangle(), junk(33) {} //ERROR #3: Used to be junk(33), Rectangle()
 
     double get_area() const {
         std::cout << "RANDOM AREA ";
